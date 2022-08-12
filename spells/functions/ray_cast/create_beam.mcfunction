@@ -1,0 +1,1 @@
+summon armor_stand ~ ~0.6 ~ {NoGravity:1b,Marker:1b,Glowing:1b,Invisible:1b,Tags:["beam"],ArmorItems:[{},{},{},{id:"minecraft:red_stained_glass",Count:1b}]}

@@ -1,0 +1,1 @@
+give @s stick{wand:1b, display: {Name:'{"text":"Wand"}'}, Enchantments: [{}]}
