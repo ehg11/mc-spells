@@ -1,1 +1,2 @@
-give @s stick{wand:1b, display: {Name:'{"text":"Wand"}'}, Enchantments: [{}]}
+execute if entity @s[tag=num_d] at @s run summon item ~ ~ ~ {PickupDelay:0,Item:{id:"minecraft:stick",Count:1b,tag:{display:{Name:'{"text":"Wand [Mode: Distance]","color":"red","bold":true}'},HideFlags:127,wand:1b, distance:1b,Enchantments:[{}]}}}
+execute if entity @s[tag=world_d] run summon item ~ ~ ~ {PickupDelay:0,Item:{id:"minecraft:stick",Count:1b,tag:{display:{Name:'{"text":"Wand [Mode: World Height]","color":"red","bold":true,"italics":false}'},HideFlags:127,wand:1b, world:1b,Enchantments:[{}]}}}

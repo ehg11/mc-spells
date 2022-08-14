@@ -22,6 +22,16 @@ team modify no_collision collisionRule never
 team modify no_collision seeFriendlyInvisibles false
 execute as @a run team join no_collision
 
+# create the bossbar
+bossbar add spells:power "Beam Power"
+bossbar add spells:cooldown "Beam Cooldown"
+bossbar set spells:power players @a
+bossbar set spells:cooldown players @a
+bossbar set speels:power color white
+bossbar set spells:cooldown color blue
+
 # reset tags
 tag @a remove beam_end
+tag @a remove world_d
+tag @a add num_d
 

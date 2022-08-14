@@ -36,7 +36,7 @@ execute as @a[tag=holding] run effect give @s slowness 1 4 true
 # --- right-click and hold logic END ---
 
 
-#> --- ray casting logic START ---
+#> --- ray casting logic START --- 
 
 # reset the rays direction before moving it
 execute if entity @p[tag=holding] if entity @e[type=armor_stand, tag=not_facing] as @e[type=armor_stand, tag=not_facing] run function spells:ray_cast/align_ray
@@ -48,10 +48,11 @@ execute as @e[type=armor_stand, tag=ray_cast] unless entity @s[tag=not_facing] s
 # end conditions ---
 
 # distance
-# execute as @e[type=armor_stand, tag=ray_cast] if score @s ray_cast_d > max_distance ray_cast_d run function spells:ray_cast/end_ray
+execute if entity @p[tag=holding, tag=num_d] run execute as @e[type=armor_stand, tag=ray_cast] if score @s ray_cast_d > max_distance ray_cast_d run function spells:ray_cast/end_ray
+
 # bottom/top of world
-execute as @e[type=armor_stand, tag=ray_cast] if score @s ray_cast_y matches ..-64 run function spells:ray_cast/end_ray
-execute as @e[type=armor_stand, tag=ray_cast] if score @s ray_cast_y matches 320.. run function spells:ray_cast/end_ray
+execute if entity @p[tag=holding, tag=world_d] run execute as @e[type=armor_stand, tag=ray_cast] if score @s ray_cast_y matches ..-64 run function spells:ray_cast/end_ray
+execute if entity @p[tag=holding, tag=world_d] run execute as @e[type=armor_stand, tag=ray_cast] if score @s ray_cast_y matches 320.. run function spells:ray_cast/end_ray
 
 # --- ray casting logic END ---
 
@@ -70,5 +71,19 @@ execute as @p[tag=beam_end] if score @s beam_cooldown >= cooldown beam_cooldown 
 
 # --- beam logic END ---
 
+
+#> --- bossbar logic START ---
+
+execute if entity @e[type=armor_stand, tag=ray_cast]
+
+# --- bossbar logic END ---
+
+
+#> --- mode toggle logic START ---
+
+execute at @p if entity @e[type=item, nbt={Item:{id:"minecraft:stick", tag:{wand:1b, distance:1b}}}, distance=1..1.5] as @p run function spells:options/set_world_d
+execute at @p if entity @e[type=item, nbt={Item:{id:"minecraft:stick", tag:{wand:1b, world:1b}}}, distance=1..1.5] as @p run function spells:options/set_num_d
+
+# --- mode toggle logic END
 
 
